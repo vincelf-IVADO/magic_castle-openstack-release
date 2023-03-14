@@ -1,6 +1,16 @@
 terraform {
   required_version = ">= 1.2.1"
+
+  cloud {
+    organization = "def-elalib-ivado-tfcloud-org"
+
+    workspaces {
+      name = "alliancecan-ivado-dev-ca-east"
+    }
+  }
+
 }
+
 
 variable "pool" {
   description = "Slurm pool of compute nodes"
@@ -19,7 +29,8 @@ module "openstack" {
   instances = {
     mgmt   = { type = "p4-6gb", tags = ["puppet", "mgmt", "nfs"], count = 1 }
     login  = { type = "p2-3gb", tags = ["login", "public", "proxy"], count = 1 }
-    node   = { type = "p2-3gb", tags = ["node"], count = 1 }
+    # node   = { type = "p2-3gb", tags = ["node"], count = 1 }
+    gpu-node   = { type = "g1-8gb-c4-22gb", tags = ["node"], count = 1 }
   }
 
   # var.pool is managed by Slurm through Terraform REST API.
@@ -36,12 +47,17 @@ module "openstack" {
     }
   }
 
-  public_keys = [file("~/.ssh/id_rsa_wsl_hp_perso_cc.pub")]
-  generate_ssh_key = true
+  # public_keys = [file("~/.ssh/id_rsa_wsl_hp_perso_cc.pub")]
+  public_keys = [file("~/.ssh/id_rsa_hp655g9_wsl_arbutus.pub"), file("~/.ssh/id_rsa_wsl_hp_perso_cc.pub")]
+  generate_ssh_key = false
 
   nb_users = 2
   # Shared password, randomly chosen if blank
   guest_passwd = ""
+
+  os_floating_ips = {
+    login1 = "206.12.89.223"
+  }
 }
 
 output "accounts" {
