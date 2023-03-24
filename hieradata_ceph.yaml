@@ -5,4 +5,4 @@
   profile::ceph::mon_host     : "10.30.201.3:6789,10.30.202.3:6789,10.30.203.3:6789"
   profile::ceph::mount_binds  : "/mnt/ceph"
   profile::ceph::mount_name   : "def-elalib-ivado-cephFS-test-rw"
-  profile::ceph::binds_fcontext_equivalence : "/def-elalib-ivado-cephFS-test-rw"
+  profile::ceph::binds_fcontext_equivalence : "/home"
