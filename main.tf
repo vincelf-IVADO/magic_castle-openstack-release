@@ -49,8 +49,8 @@ module "openstack" {
 
   # public_keys = [file("~/.ssh/id_rsa_wsl_hp_perso_cc.pub")]
   # public_keys = [file("~/.ssh/id_rsa_hp655g9_wsl_arbutus.pub")]
-  # public_keys = [file("/home/vincelf/.ssh/id_rsa_hp655g9_wsl_arbutus.pub")]
-  public_keys = [file("~/.ssh/id_rsa_hp655g9_wsl_arbutus.pub"), file("~/.ssh/id_rsa_wsl_hp_perso_cc.pub")]
+  public_keys = [file("/home/vincelf/.ssh/id_rsa_hp655g9_wsl_arbutus.pub")]
+  # public_keys = [file("~/.ssh/id_rsa_hp655g9_wsl_arbutus.pub"), file("~/.ssh/id_rsa_wsl_hp_perso_cc.pub")]
   generate_ssh_key = false
 
   nb_users = 2
