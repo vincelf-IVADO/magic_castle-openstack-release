@@ -48,9 +48,9 @@ module "openstack" {
   }
 
   # public_keys = [file("~/.ssh/id_rsa_wsl_hp_perso_cc.pub")]
-  public_keys = [file("~/.ssh/id_rsa_hp655g9_wsl_arbutus.pub")]
+  # public_keys = [file("~/.ssh/id_rsa_hp655g9_wsl_arbutus.pub")]
   # public_keys = [file("/home/vincelf/.ssh/id_rsa_hp655g9_wsl_arbutus.pub")]
-  # public_keys = [file("~/.ssh/id_rsa_hp655g9_wsl_arbutus.pub"), file("~/.ssh/id_rsa_wsl_hp_perso_cc.pub")]
+  public_keys = [file("~/.ssh/id_rsa_hp655g9_wsl_arbutus.pub"), file("~/.ssh/id_rsa_wsl_hp_perso_cc.pub")]
   generate_ssh_key = false
 
   nb_users = 2
@@ -58,10 +58,10 @@ module "openstack" {
   guest_passwd = ""
 
   os_floating_ips = {
-    login1 = "206.12.89.223"
+    login1 = "206.12.100.160"
   }
 
-  #hieradata = file("hieradata_ceph.yaml")
+  hieradata = file("hieradata_ceph.yaml")
 }
 
 output "accounts" {
